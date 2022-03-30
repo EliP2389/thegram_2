@@ -3,12 +3,13 @@ import Image from 'next/image'
 function Header() {
   return (
     <div>
-      <div>
+      <div className='flex justify-between max-w-6xl'>
         {/* {left} */}
-        <div className="relative h-24 w-24">
+        <div className="relative hidden lg:inline-grid h-24 w-24">
           <Image
+            objectFit='contain'
             layout="fill"
-            src="https://i.pinimg.com/originals/ac/76/72/ac76724616bde8c8749f73c1d07ee255.png"
+            src="https://links.papareact.com/ocw"
           />
         </div>
 

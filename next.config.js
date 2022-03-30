@@ -5,6 +5,6 @@ module.exports = {
 
 module.exports = {
   images: {
-    domains: ["i.pinimg.com"]
+    domains: ["links.papareact.com"]
   }
 }
