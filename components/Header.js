@@ -11,8 +11,8 @@ import { HomeIcon } from '@heroicons/react/solid'
 
 function Header() {
   return (
-    <div className=''>
-      <div className="flex max-w-6xl justify-between mx-5 lg:mx-auto">
+    <div className="shadow-sm border-b bg-white sticky top-0 z-50">
+      <div className="mx-5 flex max-w-6xl justify-between lg:mx-auto">
         {/* {left} */}
         <div className="relative hidden w-24 cursor-pointer lg:inline-grid">
           <Image
@@ -47,9 +47,24 @@ function Header() {
 
         {/* {right} */}
         <div className="flex items-center justify-end space-x-4">
-          <HomeIcon className='navBtn' />  
-          <MenuIcon className="h-6 md:hidden cursor-pointer" />
-          <PaperAirplaneIcon className="navBtn" />
+          <HomeIcon className="navBtn" />
+          <MenuIcon className="h-6 cursor-pointer md:hidden" />
+          <div className="navBtn relative">
+            <PaperAirplaneIcon className="navBtn rotate-45" />
+            <div className="absolute -top-1 -right-2 w-4 h-4 bg-red-500 text-xs
+            rounded-full flex items-center justify-center animate-bounce text-white"> 
+            5</div>
+          </div>
+
+          <PlusCircleIcon className="navBtn" />
+          <UserGroupIcon className="navBtn" />
+          <HeartIcon className="navBtn" />
+
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQws2ynrnSprthzn-YO-gAvkARHAlON2Yicw&usqp=CAU"
+            alt="profile pic"
+            className="h-10 cursor-pointer rounded-full"
+          />
         </div>
       </div>
     </div>
