@@ -63,7 +63,8 @@ function Header() {
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQws2ynrnSprthzn-YO-gAvkARHAlON2Yicw&usqp=CAU"
             alt="profile pic"
-            className="h-10 cursor-pointer rounded-full"
+            className="h-10 cursor-pointer rounded-full hover:scale-125
+            transition-all duration-150 ease-out"
           />
         </div>
       </div>
