@@ -6,14 +6,15 @@ import {
   HeartIcon,
   PaperAirplaneIcon,
   MenuIcon,
-} from '@heroicons/react/solid'
+} from '@heroicons/react/outline'
+import { HomeIcon } from '@heroicons/react/solid'
 
 function Header() {
   return (
-    <div>
-      <div className="flex max-w-6xl justify-between">
+    <div className=''>
+      <div className="flex max-w-6xl justify-between mx-5 lg:mx-auto">
         {/* {left} */}
-        <div className="relative hidden w-24 lg:inline-grid">
+        <div className="relative hidden w-24 cursor-pointer lg:inline-grid">
           <Image
             objectFit="contain"
             layout="fill"
@@ -45,6 +46,11 @@ function Header() {
         </div>
 
         {/* {right} */}
+        <div className="flex items-center justify-end space-x-4">
+          <HomeIcon className='navBtn' />  
+          <MenuIcon className="h-6 md:hidden cursor-pointer" />
+          <PaperAirplaneIcon className="navBtn" />
+        </div>
       </div>
     </div>
   )
