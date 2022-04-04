@@ -6,7 +6,7 @@ const post = [
     username: 'pagan123',
     userImg:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQws2ynrnSprthzn-YO-gAvkARHAlON2Yicw&usqp=CAU',
-    img: 'https://links.papareact.com/3ke',
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQws2ynrnSprthzn-YO-gAvkARHAlON2Yicw&usqp=CAU',
     caption: 'SUBSCRIBE BECAUSE THIS IS AMAZING!!!',
   },
   {
@@ -14,7 +14,7 @@ const post = [
     username: 'pagan123',
     userImg:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQws2ynrnSprthzn-YO-gAvkARHAlON2Yicw&usqp=CAU',
-    img: 'https://links.papareact.com/3ke',
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQws2ynrnSprthzn-YO-gAvkARHAlON2Yicw&usqp=CAU',
     caption: 'SUBSCRIBE BECAUSE THIS IS AMAZING!!!',
   },
   {
@@ -22,7 +22,7 @@ const post = [
     username: 'pagan123',
     userImg:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQws2ynrnSprthzn-YO-gAvkARHAlON2Yicw&usqp=CAU',
-    img: 'https://links.papareact.com/3ke',
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQws2ynrnSprthzn-YO-gAvkARHAlON2Yicw&usqp=CAU',
     caption: 'SUBSCRIBE BECAUSE THIS IS AMAZING!!!',
   },
 ]

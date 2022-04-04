@@ -24,8 +24,17 @@ function Post({ id, username, userImg, img, caption }) {
       </div>
 
       {/* {Img} */}
+      <img src={img} className="w-full object-cover" alt="profile image" />
 
       {/* {Buttons} */}
+      <div className="flex justify-between px-4 pt-4">
+        <div className="flex space-x-4">
+          <HeartIcon className="btn" />
+          <ChatIcon className="btn" />
+          <PaperAirplaneIcon className="btn" />
+        </div>
+        <BookmarkIcon className="btn" />
+      </div>
 
       {/* {Cation} */}
 
