@@ -6,12 +6,12 @@ function MiniProfile() {
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQws2ynrnSprthzn-YO-gAvkARHAlON2Yicw&usqp=CAU"
         alt="profile img" />
 
-        <div>
-            <h2>pagan123</h2>
-            <h3>Welcome to Instagram 2.0</h3>
+        <div className="mx-4 flex-1">
+            <h2 className="font-bold">pagan123</h2>
+            <h3 className="text-sm text-gray-500">Welcome to Instagram 2.0</h3>
         </div>
 
-        <button>Sign Out</button>
+        <button className="text-blue-400 text-sm font-semibold">Sign Out</button>
     </div>
   )
 }
