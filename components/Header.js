@@ -74,7 +74,7 @@ function Header() {
                 onClick={signOut}
                 src={session.user.image}
                 alt="profile pic"
-                className="h-10 cursor-pointer rounded-full transition-all
+                className="h-10 w-10 cursor-pointer rounded-full transition-all
             duration-150 ease-out hover:scale-125"
               />
             </>
