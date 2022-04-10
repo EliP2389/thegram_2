@@ -1,3 +1,5 @@
+
+
 function MiniProfile() {
   return (
     <div className="flex items-center justify-between mt-14 ml-10">
