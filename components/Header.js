@@ -9,21 +9,24 @@ import {
 } from '@heroicons/react/outline'
 import { HomeIcon } from '@heroicons/react/solid'
 import { signOut, signIn, useSession } from 'next-auth/react'
-import { useRouter } from 'next/router';
-import { useRecoilState } from 'recoil';
-import { modalState } from '../atoms/modalAtom';
+import { useRouter } from 'next/router'
+import { useRecoilState } from 'recoil'
+import { modalState } from '../atoms/modalAtom'
 
 function Header() {
-  const { data: session } = useSession();
-  const [modal, setModal] = useRecoilState(modalState);
-  const router = useRouter();
+  const { data: session } = useSession()
+  const [modal, setModal] = useRecoilState(modalState)
+  const router = useRouter()
   console.log(session)
 
   return (
     <div className="sticky top-0 z-50 border-b bg-white shadow-sm">
       <div className="mx-5 flex max-w-6xl justify-between lg:mx-auto">
         {/* {left} */}
-        <div onClick={() => router.push('/')} className="relative hidden w-24 cursor-pointer lg:inline-grid">
+        <div
+          onClick={() => router.push('/')}
+          className="relative hidden w-24 cursor-pointer lg:inline-grid"
+        >
           <Image
             objectFit="contain"
             layout="fill"
@@ -31,7 +34,10 @@ function Header() {
           />
         </div>
 
-        <div onClick={() => router.push('/')} className="relative w-14 flex-shrink-0 cursor-pointer lg:hidden">
+        <div
+          onClick={() => router.push('/')}
+          className="relative w-14 flex-shrink-0 cursor-pointer lg:hidden"
+        >
           <Image
             objectFit="contain"
             layout="fill"
@@ -71,7 +77,12 @@ function Header() {
                 </div>
               </div>
 
-              <PlusCircleIcon onClick={() => {setModal(true)}} className="navBtn" />
+              <PlusCircleIcon
+                onClick={() => {
+                  setModal(true)
+                }}
+                className="navBtn"
+              />
               <UserGroupIcon className="navBtn" />
               <HeartIcon className="navBtn" />
 
