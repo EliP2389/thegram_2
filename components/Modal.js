@@ -47,10 +47,21 @@ function Modal() {
           >
             <div
               className="inline-block transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4
-               text-left align-bottom shadow-xl transition-all sm:my-8 sm:w-full 
-               sm:max-w-sm sm:p-6 sm:align-middle"
+               text-left align-bottom shadow-xl transition-all sm:my-8 sm:w-full  sm:max-w-sm sm:p-6 sm:align-middle"
             >
-              <h1>Hello World</h1>
+              <div>
+                <div className="mt-5 sm:mt-6">
+                  <button
+                    type="button"
+                    className="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600
+                     px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none
+                     focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-gray-300
+                     hover:disabled:bg-gray-300 sm:text-sm"
+                  >
+                    Upload Post
+                  </button>
+                </div>
+              </div>
             </div>
           </Transition.Child>
         </div>
