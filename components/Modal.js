@@ -6,21 +6,21 @@ import { CameraIcon } from '@heroicons/react/outline'
 import { ifError } from 'assert'
 
 function Modal() {
-  const [modal, setModal] = useRecoilState(modalState);
-  const filePickerRef = useRef(null);
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [modal, setModal] = useRecoilState(modalState)
+  const filePickerRef = useRef(null)
+  const [selectedFile, setSelectedFile] = useState(null)
 
-// helper function for adding image to a post
-const addImageToPost = (e) => {
-    const reader = new FileReader();
+  // helper function for adding image to a post
+  const addImageToPost = (e) => {
+    const reader = new FileReader()
     if (e.target.files[0]) {
-        reader.readAsDataURL(e.target.files[0])
+      reader.readAsDataURL(e.target.files[0])
     }
 
     reader.onload = (readerEvent) => {
-        setSelectedFile(readerEvent.target.result);
-    };
-};
+      setSelectedFile(readerEvent.target.result)
+    }
+  }
 
   return (
     <Transition.Root show={modal} as={Fragment}>
@@ -66,15 +66,24 @@ const addImageToPost = (e) => {
                text-left align-bottom shadow-xl transition-all sm:my-8 sm:w-full  sm:max-w-sm sm:p-6 sm:align-middle"
             >
               <div>
-                <div
-                  onClick={() => filePickerRef.current.click()}
-                  className="justify-center mx-auto flex h-12 w-12 cursor-pointer items-center rounded-full bg-red-100"
-                >
-                  <CameraIcon
-                    className="h-6 w-6 text-red-600"
-                    aria-hidden="true"
+                {selectedFile ? (
+                  <img
+                    className="w-full object-contain cursor-pointer"
+                    src={selectedFile}
+                    onClick={() => setSelectedFile(null)}
+                    alt=""
                   />
-                </div>
+                ) : (
+                  <div
+                    onClick={() => filePickerRef.current.click()}
+                    className="mx-auto flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-red-100"
+                  >
+                    <CameraIcon
+                      className="h-6 w-6 text-red-600"
+                      aria-hidden="true"
+                    />
+                  </div>
+                )}
 
                 <div className="mt-3 text-center sm:mt-5">
                   <Dialog.Title
