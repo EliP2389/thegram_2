@@ -3,6 +3,7 @@ import { modalState } from '../atoms/modalAtom'
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useRef, useState } from 'react'
 import { CameraIcon } from '@heroicons/react/outline'
+import { ifError } from 'assert'
 
 function Modal() {
   const [modal, setModal] = useRecoilState(modalState);
@@ -10,7 +11,16 @@ function Modal() {
   const [selectedFile, setSelectedFile] = useState(null);
 
 // helper function for adding image to a post
-const addImageToPost = (e) => {}
+const addImageToPost = (e) => {
+    const reader = new FileReader();
+    if (e.target.files[0]) {
+        reader.readAsDataURL(e.target.files[0])
+    }
+
+    reader.onload = (readerEvent) => {
+        setSelectedFile(readerEvent.target.result);
+    };
+};
 
   return (
     <Transition.Root show={modal} as={Fragment}>
@@ -76,7 +86,7 @@ const addImageToPost = (e) => {}
 
                   <div>
                     <input
-                       ref={filePickerRef}
+                      ref={filePickerRef}
                       type="file"
                       hidden
                       onChange={addImageToPost}
