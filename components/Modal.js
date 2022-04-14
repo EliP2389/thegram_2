@@ -3,9 +3,13 @@ import { modalState } from '../atoms/modalAtom'
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useRef, useState } from 'react'
 import { CameraIcon } from '@heroicons/react/outline'
+import { db, storage } from '../firebase'
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
+import { useSession } from 'next-auth/react'
 
 
 function Modal() {
+  const { data: session } = useSession();
   const [modal, setModal] = useRecoilState(modalState);
   const filePickerRef = useRef(null);
   const captionRef = useRef(null);
@@ -16,6 +20,18 @@ function Modal() {
     if(loading) return;
 
     setLoading(true);
+
+    // 1) create a post and add to firestore 'posts' collection
+    // 2) get the post ID for the newly created posts
+    // 3) upload the image to firebase storage with the post ID
+    // 4) get a download URL from firebase storage and update the original post with an image
+
+    const docRef = await addDoc(collection(db, 'posts'), {
+      username: session.user.username,
+      caption: captionRef.current.value,
+      profileImg: session.user.image,
+      timestamp: serverTimestamp()
+    })
   }
 
   // helper function for adding image to a post
