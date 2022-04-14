@@ -6,6 +6,7 @@ import { CameraIcon } from '@heroicons/react/outline'
 import { db, storage } from '../firebase'
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import { useSession } from 'next-auth/react'
+import { ref } from 'firebase/storage'
 
 
 function Modal() {
@@ -32,6 +33,10 @@ function Modal() {
       profileImg: session.user.image,
       timestamp: serverTimestamp()
     })
+
+    console.log("New doc added with ID", docRef.id)
+
+    const imageRef = ref(storage, `posts/${docRef.id}/image`);
   }
 
   // helper function for adding image to a post
