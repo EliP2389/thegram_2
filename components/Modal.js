@@ -3,12 +3,13 @@ import { modalState } from '../atoms/modalAtom'
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useRef, useState } from 'react'
 import { CameraIcon } from '@heroicons/react/outline'
-import { ifError } from 'assert'
+
 
 function Modal() {
-  const [modal, setModal] = useRecoilState(modalState)
-  const filePickerRef = useRef(null)
-  const [selectedFile, setSelectedFile] = useState(null)
+  const [modal, setModal] = useRecoilState(modalState);
+  const filePickerRef = useRef(null);
+  const captionRef = useRef(null);
+  const [selectedFile, setSelectedFile] = useState(null);
 
   // helper function for adding image to a post
   const addImageToPost = (e) => {
@@ -106,7 +107,7 @@ function Modal() {
                     <input
                       className="w-full border-none text-center focus:ring-0"
                       type="text"
-                      //  ref={captionRef}
+                       ref={captionRef}
                       placeholder="Please enter a caption..."
                     />
                   </div>
