@@ -9,7 +9,14 @@ function Modal() {
   const [modal, setModal] = useRecoilState(modalState);
   const filePickerRef = useRef(null);
   const captionRef = useRef(null);
+  const [loading, setLoading] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
+
+  const uploadPost = async () => {
+    if(loading) return;
+
+    setLoading(true);
+  }
 
   // helper function for adding image to a post
   const addImageToPost = (e) => {
