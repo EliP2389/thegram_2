@@ -2,6 +2,7 @@ import { useRecoilState } from 'recoil'
 import { modalState } from '../atoms/modalAtom'
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
+import { CameraIcon } from '@heroicons/react/outline'
 
 function Modal() {
   const [modal, setModal] = useRecoilState(modalState)
@@ -50,31 +51,42 @@ function Modal() {
                text-left align-bottom shadow-xl transition-all sm:my-8 sm:w-full  sm:max-w-sm sm:p-6 sm:align-middle"
             >
               <div>
-                  <div className='mt-3 text-center sm:mt-5'>
-                         <Dialog.Title
-                         as='h3'
-                         className='text-lg leading-6 font-medium text-gray-900'>
-                             Upload A Photo 
-                         </Dialog.Title>
+                <div
+                //   onClick={() => filePickerRef.current.click()}
+                  className="justify-center mx-auto flex h-12 w-12 cursor-pointer items-center rounded-full bg-red-100"
+                >
+                  <CameraIcon
+                    className="h-6 w-6 text-red-600"
+                    aria-hidden="true"
+                  />
+                </div>
 
-                         <div>
-                             <input
-                            //  ref={filePickerRef} 
-                            type='file'
-                            hidden
-                            // onChange={addImageToPost}
-                            />
-                         </div>
+                <div className="mt-3 text-center sm:mt-5">
+                  <Dialog.Title
+                    as="h3"
+                    className="text-lg font-medium leading-6 text-gray-900"
+                  >
+                    Upload A Photo
+                  </Dialog.Title>
 
-                         <div className='mt-2'>
-                             <input
-                             className='border-none focus:ring-0 w-full text-center'
-                             type='text'
-                            //  ref={captionRef}
-                            placeholder='Please enter a caption...' 
-                            />
-                         </div>
+                  <div>
+                    <input
+                       ref={filePickerRef}
+                      type="file"
+                      hidden
+                      // onChange={addImageToPost}
+                    />
                   </div>
+
+                  <div className="mt-2">
+                    <input
+                      className="w-full border-none text-center focus:ring-0"
+                      type="text"
+                      //  ref={captionRef}
+                      placeholder="Please enter a caption..."
+                    />
+                  </div>
+                </div>
 
                 <div className="mt-5 sm:mt-6">
                   <button
