@@ -1,3 +1,5 @@
+import { collection, onSnapshot, query } from 'firebase/firestore';
+import { useEffect, useState } from 'react'
 import Post from './Post'
 
 const post = [
@@ -28,6 +30,12 @@ const post = [
 ]
 
 function Posts() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+   onSnapshot(collection(query(db, 'posts')))
+  }, [])
+
   return (
     <div>
       {post.map((post) => (
