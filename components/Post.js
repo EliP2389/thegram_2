@@ -14,13 +14,14 @@ import { useState } from 'react'
 import { db } from '../firebase'
 
 function Post({ id, username, userImg, img, caption }) {
-  const { data: session } = useSession()
-  const [comment, setComment] = useState('')
+  const { data: session } = useSession();
+  const [comment, setComment] = useState('');
+  const [userComments, setUserComments] = useState([]);
 
   const sendComment = async (e) => {
     e.preventDefault()
 
-    // commentToSend variable copies the comment so it cannot be spammed
+    // commentToSend variable copies the comment
     const commentToSend = comment;
     setComment('')
 
