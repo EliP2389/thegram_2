@@ -8,29 +8,47 @@ import {
 } from '@heroicons/react/outline'
 
 import { HeartIcon as HeartIconFilled } from '@heroicons/react/solid'
-import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
+import {
+  addDoc,
+  collection,
+  onSnapshot,
+  orderBy,
+  query,
+  serverTimestamp,
+} from 'firebase/firestore'
 import { useSession } from 'next-auth/react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { db } from '../firebase'
 
 function Post({ id, username, userImg, img, caption }) {
-  const { data: session } = useSession();
-  const [comment, setComment] = useState('');
-  const [userComments, setUserComments] = useState([]);
+  const { data: session } = useSession()
+  const [comment, setComment] = useState('')
+  const [userComments, setUserComments] = useState([])
+
+  useEffect(
+    () =>
+      onSnapshot(
+        query(
+        collection(db, 'posts', id, 'comments'),
+        orderBy('timestamp', 'desc'),
+        ),
+        (snapshot) => setUserComments(snapshot.docs)
+      )[db]
+  );
 
   const sendComment = async (e) => {
     e.preventDefault()
 
     // commentToSend variable copies the comment
-    const commentToSend = comment;
+    const commentToSend = comment
     setComment('')
 
     await addDoc(collection(db, 'posts', id, 'comments'), {
       comment: commentToSend,
       username: session.user.username,
       userImg: session.user.image,
-      timestamp: serverTimestamp()
-    });
+      timestamp: serverTimestamp(),
+    })
   }
 
   return (
