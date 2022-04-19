@@ -9,9 +9,11 @@ import {
 
 import { HeartIcon as HeartIconFilled } from '@heroicons/react/solid'
 import { useSession } from 'next-auth/react'
+import { useState } from 'react';
 
 function Post({ id, username, userImg, img, caption }) {
 const {data: session} = useSession();
+const [comment, setComment] =useState('');
 
   return (
     <div className="my-7 rounded-sm border bg-white">
@@ -54,6 +56,7 @@ const {data: session} = useSession();
         <EmojiHappyIcon className="h-7" />
         <input
           type="text"
+          value={comment}
           placeholder="Add a comment..."
           className="flex-1 border-none outline-none focus:ring-0"
         />
