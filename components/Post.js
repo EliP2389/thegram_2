@@ -8,12 +8,27 @@ import {
 } from '@heroicons/react/outline'
 
 import { HeartIcon as HeartIconFilled } from '@heroicons/react/solid'
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import { useSession } from 'next-auth/react'
-import { useState } from 'react';
+import { useState } from 'react'
 
 function Post({ id, username, userImg, img, caption }) {
-const {data: session} = useSession();
-const [comment, setComment] =useState('');
+  const { data: session } = useSession()
+  const [comment, setComment] = useState('')
+
+  const sendComment = async (e) => {
+    e.preventDefault()
+
+    const commentToSend = comment;
+    setComment('')
+
+    await addDoc(collection(db, 'posts', id, 'comments'), {
+      comment: commentToSend,
+      username: session.user.username,
+      userImg: session.user.image,
+      timestamp: serverTimestamp()
+    });
+  }
 
   return (
     <div className="my-7 rounded-sm border bg-white">
@@ -52,16 +67,26 @@ const [comment, setComment] =useState('');
       {/* {Comments} */}
 
       {/* {Input box} */}
-      {session && ( <form className="flex items-center p-4">
-        <EmojiHappyIcon className="h-7" />
-        <input
-          type="text"
-          value={comment}
-          placeholder="Add a comment..."
-          className="flex-1 border-none outline-none focus:ring-0"
-        />
-        <button className="text-blue-600">Post</button>
-      </form>)}
+      {session && (
+        <form className="flex items-center p-4">
+          <EmojiHappyIcon className="h-7" />
+          <input
+            type="text"
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            placeholder="Add a comment..."
+            className="flex-1 border-none outline-none focus:ring-0"
+          />
+          <button
+            type="submit"
+            disabled={!comment.trim()}
+            onClick={sendComment}
+            className="text-blue-600"
+          >
+            Post
+          </button>
+        </form>
+      )}
     </div>
   )
 }
