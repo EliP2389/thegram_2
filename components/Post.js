@@ -11,6 +11,7 @@ import { HeartIcon as HeartIconFilled } from '@heroicons/react/solid'
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import { useSession } from 'next-auth/react'
 import { useState } from 'react'
+import { db } from '../firebase'
 
 function Post({ id, username, userImg, img, caption }) {
   const { data: session } = useSession()
@@ -19,6 +20,7 @@ function Post({ id, username, userImg, img, caption }) {
   const sendComment = async (e) => {
     e.preventDefault()
 
+    // commentToSend variable copies the comment so it cannot be spammed
     const commentToSend = comment;
     setComment('')
 
