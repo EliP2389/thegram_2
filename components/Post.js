@@ -19,6 +19,7 @@ import {
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 import { db } from '../firebase'
+import Moment from 'react-moment'
 
 function Post({ id, username, userImg, img, caption }) {
   const { data: session } = useSession()
