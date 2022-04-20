@@ -29,12 +29,12 @@ function Post({ id, username, userImg, img, caption }) {
     () =>
       onSnapshot(
         query(
-        collection(db, 'posts', id, 'comments'),
-        orderBy('timestamp', 'desc'),
+          collection(db, 'posts', id, 'comments'),
+          orderBy('timestamp', 'desc')
         ),
         (snapshot) => setUserComments(snapshot.docs)
       )[db]
-  );
+  )
 
   const sendComment = async (e) => {
     e.preventDefault()
@@ -86,6 +86,23 @@ function Post({ id, username, userImg, img, caption }) {
       </p>
 
       {/* {Comments} */}
+      {userComments.length > 0 && (
+        <div className="ml-10 h-20 overflow-y-scroll scrollbar-thin scrollbar-track-black">
+          {userComments.map((comment) => (
+            <div key={comment.id} className="mb-3 flex items-center space-x-2">
+              <img
+                className="h-7 rounded-full"
+                src={comment.data().userImg}
+                alt=""
+              />
+              <p>
+                <span className="font-bold">{comment.data().username}</span>{' '}
+                {comment.data().comment}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* {Input box} */}
       {session && (
