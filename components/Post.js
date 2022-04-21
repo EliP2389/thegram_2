@@ -132,9 +132,11 @@ function Post({ id, username, userImg, img, caption }) {
                 src={comment.data().userImg}
                 alt=""
               />
+              {/* <HeartIcon className="btn"/> */}
               <p className="flex-1 text-sm">
                 <span className="font-bold">{comment.data().username}</span>{' '}
                 {comment.data().comment}
+                
               </p>
               <Moment fromNow className="pr-5 text-xs">
                 {comment.data().timestamp?.toDate()}
