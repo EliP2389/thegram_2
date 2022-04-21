@@ -25,11 +25,11 @@ import { db } from '../firebase'
 import Moment from 'react-moment'
 
 function Post({ id, username, userImg, img, caption }) {
-  const { data: session } = useSession()
-  const [comment, setComment] = useState('')
-  const [userComments, setUserComments] = useState([])
-  const [likes, setLikes] = useState([])
-  const [hasLiked, setHasLiked] = useState(false)
+  const { data: session } = useSession();
+  const [comment, setComment] = useState('');
+  const [userComments, setUserComments] = useState([]);
+  const [likes, setLikes] = useState([]);
+  const [hasLiked, setHasLiked] = useState(false);
 
   useEffect(
     () =>
@@ -50,11 +50,11 @@ function Post({ id, username, userImg, img, caption }) {
     [db, id]
   )
 
-  useEffect(() => {
+  useEffect(() => 
     setHasLiked(
       likes.findIndex((like) => like.id === session?.user?.uid) !== -1
     )
-  }, [likes])
+  , [likes])
 
   const likePost = async () => {
     if (hasLiked) {
@@ -115,6 +115,9 @@ function Post({ id, username, userImg, img, caption }) {
 
       {/* {Caption} */}
       <p className="truncate p-5">
+        {likes.length > 0 && (
+          <p className='font-bold mb-1'>{likes.length} likes</p>
+        )}
         <span className="mr-2 font-bold">{username}</span>
         {caption}
       </p>
