@@ -21,3 +21,4 @@ This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](
 
 * Download https://github.com/EliP2389/thegram_2.git to local device
 * npm run dev to start server 
+* run http://localhost:3000/ in browser
